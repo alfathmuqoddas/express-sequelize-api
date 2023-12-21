@@ -13,7 +13,7 @@ module.exports = (sequelize, Sequelize) => {
 
   Users.associate = function (models) {
     Users.hasMany(models.blog_comments);
-    Users.hasMany(models.blog_comments);
+    Users.hasMany(models.blog_posts);
   };
 
   return Users;
