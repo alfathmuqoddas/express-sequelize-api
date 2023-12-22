@@ -8,10 +8,6 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    user_id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
     category: {
       type: Sequelize.INTEGER,
     },

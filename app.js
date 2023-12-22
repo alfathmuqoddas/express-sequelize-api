@@ -1,11 +1,11 @@
 const express = require("express");
-const Sequelize = require("sequelize");
 //require("dotenv").config();
 const db = require("./src/models");
 const app = express();
 const bodyParser = require("body-parser");
 const port = 3000;
 const authRoutes = require("./src/routes/auth.route");
+const blogRoutes = require("./src/routes/blog.route");
 
 app.use(bodyParser.json());
 app.use(
@@ -32,10 +32,12 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRoutes);
+app.use("/blogs", blogRoutes);
 
 app.listen(port, async () => {
   console.log(`Server is running on port ${port}.`);
   try {
+    //await db.sequelize.sync({ force: true });
     await db.sequelize.sync();
     await db.sequelize.authenticate();
     console.log("Connection has been established successfully.");

@@ -4,14 +4,6 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    user_id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
-    post_id: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
   });
 
   BlogComments.associate = function (models) {
