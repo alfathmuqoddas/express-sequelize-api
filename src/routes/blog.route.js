@@ -4,22 +4,20 @@ const blogPostController = require("../controllers/blogPost.controller");
 
 const router = express.Router();
 
-router.get("/", blogPostController.getListAllBlogs);
-router.get("/:id", blogPostController.getBlogById);
-router.post(
-  "/create",
-  authController.authenticateJwt,
-  blogPostController.createBlogPost
-);
-router.put(
-  "/:id/update",
-  authController.authenticateJwt,
-  blogPostController.updateBlogPost
-);
-router.delete(
-  "/:id/delete",
-  authController.authenticateJwt,
-  blogPostController.deleteBlogPost
-);
+const {
+  getListAllBlogs,
+  getBlogById,
+  createBlogPost,
+  updateBlogPost,
+  deleteBlogPost,
+} = blogPostController;
+
+const { authenticateJwt } = authController;
+
+router.get("/", getListAllBlogs);
+router.get("/:blogId", getBlogById);
+router.post("/create", authenticateJwt, createBlogPost);
+router.put("/:blogId/update", authenticateJwt, updateBlogPost);
+router.delete("/:blogId/delete", authenticateJwt, deleteBlogPost);
 
 module.exports = router;
