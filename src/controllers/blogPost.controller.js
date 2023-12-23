@@ -64,14 +64,18 @@ const updateBlogPost = async (req, res) => {
     const blogId = req.params.blogId;
     const { title, body } = req.body;
 
-    const updateBlog = await BlogPosts.update(
-      {
-        title: title,
-        body: body,
-        slug: createSlug(title),
-      },
-      { where: { id: blogId } }
-    );
+    const updateObject = {};
+    if (title !== undefined) {
+      updateObject.title = title;
+      updateObject.slug = createSlug(title);
+    }
+    if (body !== undefined) {
+      updateObject.body = body;
+    }
+
+    const updateBlog = await BlogPosts.update(updateObject, {
+      where: { id: blogId },
+    });
     if (updateBlog > 0) {
       res.json({ message: "Blog post updated successfully" });
     } else {
@@ -102,7 +106,7 @@ const deleteBlogPost = async (req, res) => {
 module.exports = {
   getListAllBlogs,
   getBlogById,
-  getBlogByUserId,
+  //getBlogByUserId,
   createBlogPost,
   updateBlogPost,
   deleteBlogPost,

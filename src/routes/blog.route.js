@@ -17,7 +17,7 @@ const { authenticateJwt } = authController;
 router.get("/", getListAllBlogs);
 router.get("/:blogId", getBlogById);
 router.post("/create", authenticateJwt, createBlogPost);
-router.put("/:blogId/update", authenticateJwt, updateBlogPost);
-router.delete("/:blogId/delete", authenticateJwt, deleteBlogPost);
+router.put("/update/:blogId", authenticateJwt, updateBlogPost);
+router.delete("/delete/:blogId", authenticateJwt, deleteBlogPost);
 
 module.exports = router;
