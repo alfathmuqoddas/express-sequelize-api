@@ -38,10 +38,10 @@ const getBlogById = async (req, res) => {
   }
 };
 
-const getBlogByUserId = async (req, res) => {
-  try {
-  } catch (error) {}
-};
+// const getBlogByUserId = async (req, res) => {
+//   try {
+//   } catch (error) {}
+// };
 
 const createBlogPost = async (req, res) => {
   try {
