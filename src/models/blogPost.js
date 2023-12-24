@@ -18,11 +18,16 @@ module.exports = (sequelize, Sequelize) => {
     status: {
       type: Sequelize.INTEGER,
     },
+    user_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
   });
 
   BlogPosts.associate = function (models) {
     BlogPosts.hasMany(models.blog_comments, {
       onDelete: "CASCADE",
+      foreignKey: "blog_id",
     });
     BlogPosts.belongsTo(models.users);
   };

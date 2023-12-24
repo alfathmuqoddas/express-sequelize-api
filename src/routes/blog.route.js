@@ -12,12 +12,12 @@ const {
   deleteBlogPost,
 } = blogPostController;
 
-const { authenticateJwt } = authController;
+//const { authenticateJwt } = authController;
 
 router.get("/", getListAllBlogs);
 router.get("/:blogId", getBlogById);
-router.post("/create", authenticateJwt, createBlogPost);
-router.put("/:blogId", authenticateJwt, updateBlogPost);
-router.delete("/:blogId", authenticateJwt, deleteBlogPost);
+router.post("/create", authController.authenticateJwt, createBlogPost);
+router.put("/:blogId", authController.authenticateJwt, updateBlogPost);
+router.delete("/:blogId", authController.authenticateJwt, deleteBlogPost);
 
 module.exports = router;

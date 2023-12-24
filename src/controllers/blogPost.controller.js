@@ -1,8 +1,6 @@
 const db = require("../models");
 const BlogPosts = db.blog_posts;
-const helpers = require("../utils/helpers");
-
-const { createSlug } = helpers;
+const { createSlug } = require("../utils/helpers");
 
 const getListAllBlogs = async (req, res) => {
   try {
@@ -44,15 +42,16 @@ const getBlogById = async (req, res) => {
 // };
 
 const createBlogPost = async (req, res) => {
-  try {
-    const { title, body } = req.body;
+  const { title, body, user_id } = req.body;
 
+  try {
     const createPost = await BlogPosts.create({
       title: title,
       body: body,
       slug: createSlug(title),
+      user_id: user_id,
     });
-    res.json({ message: "Blog post successfully created!", createPost });
+    res.json({ message: "Blog post successfully created!" });
   } catch (error) {
     console.error("Error fetching blog posts:", error);
     res.status(500).json({ error: "Internal Server Error" });

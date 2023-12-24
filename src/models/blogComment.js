@@ -4,11 +4,19 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    user_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    blog_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
   });
 
   BlogComments.associate = function (models) {
-    BlogComments.belongsTo(models.blog_posts);
-    BlogComments.belongsTo(models.users);
+    BlogComments.belongsTo(models.blog_posts, { foreignKey: "blog_id" });
+    BlogComments.belongsTo(models.users, { foreignKey: "user_id" });
   };
 
   return BlogComments;
