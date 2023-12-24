@@ -45,11 +45,6 @@ const register = async (req, res) => {
       password: bcrypt.hashSync(password, 8),
     });
 
-    const token = jwt.sign(
-      { id: newUser.id, username: newUser.username },
-      secretKey
-    );
-
     res.json({
       message: "User was registered successfully!",
     });
@@ -89,9 +84,7 @@ const login = async (req, res) => {
     });
 
     res.status(200).send({
-      id: user.id,
-      username: user.username,
-      email: user.email,
+      success: true,
       accessToken: token,
     });
   } catch (error) {

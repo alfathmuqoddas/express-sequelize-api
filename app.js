@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const port = 3000;
 const authRoutes = require("./src/routes/auth.route");
 const blogRoutes = require("./src/routes/blog.route");
+const commentRoutes = require("./src/routes/comment.route");
 
 app.use(bodyParser.json());
 app.use(
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRoutes);
 app.use("/blogs", blogRoutes);
+app.use("/comments", commentRoutes);
 
 app.listen(port, async () => {
   console.log(`Server is running on port ${port}.`);

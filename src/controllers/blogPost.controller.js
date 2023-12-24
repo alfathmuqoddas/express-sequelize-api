@@ -68,7 +68,7 @@ const createBlogPost = async (req, res) => {
       slug: createSlug(title),
       user_id: user_id,
     });
-    res.json({ message: "Blog post successfully created!" });
+    res.json({ message: "Blog post successfully created!", user: req.user });
   } catch (error) {
     console.error("Error fetching blog posts:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -78,6 +78,7 @@ const createBlogPost = async (req, res) => {
 const updateBlogPost = async (req, res) => {
   try {
     const blogId = req.params.blogId;
+    const userId = req.user.id;
     const { title, body } = req.body;
 
     const updateObject = {};
@@ -90,12 +91,14 @@ const updateBlogPost = async (req, res) => {
     }
 
     const updateBlog = await BlogPosts.update(updateObject, {
-      where: { id: blogId },
+      where: { id: blogId, user_id: userId },
     });
-    if (updateBlog > 0) {
-      res.json({ message: "Blog post updated successfully" });
+    if (updateBlog === 0) {
+      res.status(404).json({
+        message: `No post found for the given userId: ${userId} and postId: ${blogId}`,
+      });
     } else {
-      res.status(404).json({ error: "Blog post not found" });
+      res.json({ error: "Blog post successfully updated!" });
     }
   } catch (error) {
     console.error("Error fetching blog posts:", error);
@@ -106,12 +109,17 @@ const updateBlogPost = async (req, res) => {
 const deleteBlogPost = async (req, res) => {
   try {
     const blogId = req.params.blogId;
+    const userId = req.user.id;
 
-    const deletePost = await BlogPosts.destroy({ where: { id: blogId } });
-    if (deletePost > 0) {
-      res.json({ message: "Blog post deleted successfully" });
+    const deletePost = await BlogPosts.destroy({
+      where: { id: blogId, user_id: userId },
+    });
+    if (deletePost === 0) {
+      res.status(404).json({
+        message: `No post found for the given userId: ${userId} and postId: ${blogId}`,
+      });
     } else {
-      res.status(404).json({ error: "Blog post not found" });
+      res.json({ message: "Blog post successfully deleted" });
     }
   } catch (error) {
     console.error("Error fetching blog posts:", error);
