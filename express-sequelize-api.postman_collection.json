@@ -16,13 +16,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzAzNDEzNzIxLCJleHAiOjE3MDM0MTczMjF9.RNw5p9ekrUbrzhh2jPbwHUG0rSg-NEb7-aqHuG28raU",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    title: \"Testing\"\r\n    body: \"My First freaking blog\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Created by alfathmuqoddas2\",\r\n    \"body\": \"Blog by alfathmuqoddas2\",\r\n    \"user_id\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -51,13 +51,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNDE1MDg2LCJleHAiOjE3MDM0MTg2ODZ9.Pn-juytZS76ZoM0LkiPWiczxU_Td8E7xcV14qe-1awQ",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    title: \"Testing Edited\"\r\n    body: \"My First freaking blog\"\r\n}",
+							"raw": "{\r\n    \"category\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -78,7 +78,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "1"
 								}
 							]
 						}
@@ -92,12 +92,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNDE1MDg2LCJleHAiOjE3MDM0MTg2ODZ9.Pn-juytZS76ZoM0LkiPWiczxU_Td8E7xcV14qe-1awQ",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/blogs/:id",
+							"raw": "http://localhost:3000/blogs/:blogId",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -105,12 +105,12 @@
 							"port": "3000",
 							"path": [
 								"blogs",
-								":id"
+								":blogId"
 							],
 							"variable": [
 								{
-									"key": "id",
-									"value": ""
+									"key": "blogId",
+									"value": "3"
 								}
 							]
 						}
@@ -130,15 +130,14 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/blogs/",
+							"raw": "http://localhost:3000/blogs",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"blogs",
-								""
+								"blogs"
 							]
 						}
 					},
@@ -170,7 +169,41 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBlogByUserId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/blogs/user/:userId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogs",
+								"user",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "1"
 								}
 							]
 						}
@@ -218,7 +251,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Alfath\",\r\n    \"password\": \"11091998\"\r\n}",
+							"raw": "{\r\n    \"username\": \"alfathmuqoddas\",\r\n    \"password\": \"11091998\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -247,7 +280,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzMjUzNTk1LCJleHAiOjE3MDMyNTcxOTV9.9YgpMgvwXAuUcZV8sI3qhp9hdB31x470oYb-3DfZaLs",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNDA4MjE5LCJleHAiOjE3MDM0MTE4MTl9.IEebrBKgCApKMki89PW8R2e1bren3hiqPMM3QDhreog",
 								"type": "text"
 							}
 						],

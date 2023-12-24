@@ -37,8 +37,8 @@ app.use("/blogs", blogRoutes);
 app.listen(port, async () => {
   console.log(`Server is running on port ${port}.`);
   try {
-    await db.sequelize.sync({ force: true });
-    //await db.sequelize.sync();
+    //await db.sequelize.sync({ force: true });
+    await db.sequelize.sync();
     await db.sequelize.authenticate();
     console.log("Connection has been established successfully.");
   } catch (error) {

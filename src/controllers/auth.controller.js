@@ -52,7 +52,6 @@ const register = async (req, res) => {
 
     res.json({
       message: "User was registered successfully!",
-      accessToken: token,
     });
   } catch (error) {
     console.log("Error registering user: ", error);

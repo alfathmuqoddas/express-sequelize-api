@@ -1,14 +1,17 @@
 const db = require("../models");
 const BlogPosts = db.blog_posts;
+const User = db.users;
 const { createSlug } = require("../utils/helpers");
 
 const getListAllBlogs = async (req, res) => {
   try {
-    const allBlogs = await BlogPosts.findAll();
+    const allBlogs = await BlogPosts.findAll({
+      include: [{ model: User, attributes: ["id", "username", "email"] }],
+    });
     if (allBlogs.length === 0) {
       res.status(404).json({ message: "No blog posts found." });
     } else {
-      res.json({ allBlogs });
+      res.json({ success: true, blogPosts: allBlogs });
     }
   } catch (error) {
     console.error("Error fetching blog posts:", error);
@@ -36,10 +39,24 @@ const getBlogById = async (req, res) => {
   }
 };
 
-// const getBlogByUserId = async (req, res) => {
-//   try {
-//   } catch (error) {}
-// };
+const getBlogByUserId = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const blogByUserId = await BlogPosts.findAll({
+      where: {
+        user_id: userId,
+      },
+    });
+    if (blogByUserId.length === 0) {
+      res.status(404).json({ message: "No blog posts found." });
+    } else {
+      res.json({ blogByUserId });
+    }
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 const createBlogPost = async (req, res) => {
   const { title, body, user_id } = req.body;
@@ -90,7 +107,7 @@ const deleteBlogPost = async (req, res) => {
   try {
     const blogId = req.params.blogId;
 
-    const deletePost = await BlogPosts.delete({ where: { id: blogId } });
+    const deletePost = await BlogPosts.destroy({ where: { id: blogId } });
     if (deletePost > 0) {
       res.json({ message: "Blog post deleted successfully" });
     } else {
@@ -105,7 +122,7 @@ const deleteBlogPost = async (req, res) => {
 module.exports = {
   getListAllBlogs,
   getBlogById,
-  //getBlogByUserId,
+  getBlogByUserId,
   createBlogPost,
   updateBlogPost,
   deleteBlogPost,

@@ -1,5 +1,5 @@
 const express = require("express");
-const authController = require("../controllers/auth.controller");
+const { authenticateJwt } = require("../controllers/auth.controller");
 const blogPostController = require("../controllers/blogPost.controller");
 
 const router = express.Router();
@@ -7,6 +7,7 @@ const router = express.Router();
 const {
   getListAllBlogs,
   getBlogById,
+  getBlogByUserId,
   createBlogPost,
   updateBlogPost,
   deleteBlogPost,
@@ -16,8 +17,9 @@ const {
 
 router.get("/", getListAllBlogs);
 router.get("/:blogId", getBlogById);
-router.post("/create", authController.authenticateJwt, createBlogPost);
-router.put("/:blogId", authController.authenticateJwt, updateBlogPost);
-router.delete("/:blogId", authController.authenticateJwt, deleteBlogPost);
+router.get("/user/:userId", getBlogByUserId);
+router.post("/create", authenticateJwt, createBlogPost);
+router.put("/:blogId", authenticateJwt, updateBlogPost);
+router.delete("/:blogId", authenticateJwt, deleteBlogPost);
 
 module.exports = router;

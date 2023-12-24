@@ -29,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
       onDelete: "CASCADE",
       foreignKey: "blog_id",
     });
-    BlogPosts.belongsTo(models.users);
+    BlogPosts.belongsTo(models.users, { foreignKey: "user_id" });
   };
 
   return BlogPosts;
