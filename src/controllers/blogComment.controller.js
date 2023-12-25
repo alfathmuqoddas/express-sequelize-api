@@ -21,11 +21,11 @@ const getCommentByBlogId = async (req, res) => {
 const createCommentByBlogId = async (req, res) => {
   try {
     const blogId = req.params.blogId;
-    const { text, userId } = req.body;
+    const { text } = req.body;
 
     const commentByBlogId = await Comment.create({
       text: text,
-      user_id: userId,
+      user_id: req.user.id,
       blog_id: blogId,
     });
     res.json({
@@ -41,7 +41,12 @@ const updateComment = async (req, res) => {
   try {
     const commentId = req.params.commentId;
     const userId = req.user.id;
-    const updateCommentById = await Comment.update({
+    const { text } = req.body;
+    const updateObject = {};
+    if (text !== undefined) {
+      updateObject.text = text;
+    }
+    const [updateCommentById] = await Comment.update(updateObject, {
       where: {
         id: commentId,
         user_id: userId,
@@ -49,10 +54,11 @@ const updateComment = async (req, res) => {
     });
     if (updateCommentById === 0) {
       res.status(404).json({
-        message: `No cooment found for the given userId: ${userId} and commentId: ${commentId}`,
+        error: `No comment found for the given userId: ${userId} and commentId: ${commentId}`,
+        updateCommentById,
       });
     } else {
-      res.json({ error: "Comment successfully updated!" });
+      res.json({ message: "Comment successfully updated!", updateCommentById });
     }
   } catch (error) {
     console.error("Error regarding comment api:", error);

@@ -90,15 +90,16 @@ const updateBlogPost = async (req, res) => {
       updateObject.body = body;
     }
 
-    const updateBlog = await BlogPosts.update(updateObject, {
+    const [updateBlog] = await BlogPosts.update(updateObject, {
       where: { id: blogId, user_id: userId },
     });
     if (updateBlog === 0) {
       res.status(404).json({
-        message: `No post found for the given userId: ${userId} and postId: ${blogId}`,
+        error: `No post found for the given userId: ${userId} and postId: ${blogId}`,
+        updateBlog,
       });
     } else {
-      res.json({ error: "Blog post successfully updated!" });
+      res.json({ message: "Blog post successfully updated!", updateBlog });
     }
   } catch (error) {
     console.error("Error fetching blog posts:", error);
