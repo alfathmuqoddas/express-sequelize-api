@@ -1,6 +1,8 @@
 const db = require("../models");
 const BlogPosts = db.blog_posts;
 const User = db.users;
+const BlogTags = db.blog_tags;
+const BlogPostTags = db.blog_post_tags;
 const { createSlug } = require("../utils/helpers");
 
 const getListAllBlogs = async (req, res) => {
@@ -58,17 +60,53 @@ const getBlogByUserId = async (req, res) => {
   }
 };
 
+const getBlogByTagId = async (req, res) => {
+  try {
+    const tagId = req.params.tagId;
+    const blogByTag = await BlogPosts.findAll({
+      include: [
+        {
+          model: BlogTags,
+          through: { model: BlogPostTags, where: { tagId: tagId } },
+        },
+      ],
+    });
+    if (blogByTag.length === 0) {
+      res
+        .status(404)
+        .json({ message: `No blog posts with tag id: ${tagId} found.` });
+    } else {
+      res.json({ success: true, blogByTag: blogByTag });
+    }
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 const createBlogPost = async (req, res) => {
-  const { title, body, user_id } = req.body;
+  const { title, body, tagIds } = req.body;
+  const userId = req.user.id;
 
   try {
     const createPost = await BlogPosts.create({
       title: title,
       body: body,
       slug: createSlug(title),
-      user_id: user_id,
+      user_id: userId,
     });
-    res.json({ message: "Blog post successfully created!", user: req.user });
+
+    // Add tags to the blog post
+    if (tagIds && tagIds.length) {
+      const tags = await Tag.findAll({ where: { id: tagIds } });
+      await createPost.addTags(tags);
+    }
+
+    res.json({
+      message: "Blog post successfully created!",
+      user: req.user,
+      createPost,
+    });
   } catch (error) {
     console.error("Error fetching blog posts:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -132,6 +170,7 @@ module.exports = {
   getListAllBlogs,
   getBlogById,
   getBlogByUserId,
+  getBlogByTagId,
   createBlogPost,
   updateBlogPost,
   deleteBlogPost,

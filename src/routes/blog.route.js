@@ -4,6 +4,7 @@ const {
   getListAllBlogs,
   getBlogById,
   getBlogByUserId,
+  getBlogByTagId,
   createBlogPost,
   updateBlogPost,
   deleteBlogPost,
@@ -27,5 +28,8 @@ router.delete("/:blogId", authenticateJwt, deleteBlogPost);
 //blog comment
 router.get("/:blogId/comments", getCommentByBlogId);
 router.post("/:blogId/comments", authenticateJwt, createCommentByBlogId);
+
+//blog tag
+router.get("/tag/:tagId", getBlogByTagId);
 
 module.exports = router;

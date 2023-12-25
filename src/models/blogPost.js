@@ -30,6 +30,9 @@ module.exports = (sequelize, Sequelize) => {
       foreignKey: "blog_id",
     });
     BlogPosts.belongsTo(models.users, { foreignKey: "user_id" });
+    BlogPosts.belongsToMany(models.blog_tags, {
+      through: models.blog_post_tags,
+    });
   };
 
   return BlogPosts;
