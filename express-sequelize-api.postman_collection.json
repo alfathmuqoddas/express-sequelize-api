@@ -16,7 +16,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzAzNDQ2NzQ4LCJleHAiOjE3MDM0NTAzNDh9.wmGzLbJeYepOopM6BrY9--Kuzxh1Du0n4tBy8_mTZ-Q",
+								"value": "{{jwt}}",
 								"type": "text"
 							}
 						],
@@ -51,7 +51,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNTE4NTk4LCJleHAiOjE3MDM1MjIxOTh9.QM3czvdNoKMH8LxSPZm_WNU1lZKdsTaFnJA8w_XL1rQ",
+								"value": "{{jwt}}",
 								"type": "text"
 							}
 						],
@@ -92,7 +92,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNDQ2ODgxLCJleHAiOjE3MDM0NTA0ODF9.rpb32GbyoQV0MEtqfD_lGw7NydgrAz_vkoLnSisFcJ0",
+								"value": "{{jwt}}",
 								"type": "text"
 							}
 						],
@@ -280,7 +280,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNDQ1NzIxLCJleHAiOjE3MDM0NDkzMjF9.XW18n-nMCHpB-ZoPOH7R4yX3Tj_ZlgZ3IKKekeMYTkQ",
+								"value": "{{jwt}}",
 								"type": "text"
 							}
 						],
@@ -352,7 +352,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzAzNTE2NTY5LCJleHAiOjE3MDM1MjAxNjl9.9suMXLQJJIh2DlKwjcwiCwCXrzTyjEBp558itgzA5SM",
+								"value": "{{jwt}}",
 								"type": "text"
 							}
 						],
@@ -394,7 +394,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzAzNTE2NTY5LCJleHAiOjE3MDM1MjAxNjl9.9suMXLQJJIh2DlKwjcwiCwCXrzTyjEBp558itgzA5SM",
+								"value": "{{jwt}}",
 								"type": "text"
 							}
 						],
@@ -426,7 +426,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNTE5MTY0LCJleHAiOjE3MDM1MjI3NjR9.IYuRudM9tl5VPeT8Oa9k4UARDkSRgbex5ZEDutlQwsg",
+								"value": "{{jwt}}",
 								"type": "text"
 							}
 						],
