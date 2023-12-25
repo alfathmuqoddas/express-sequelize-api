@@ -16,13 +16,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzAzNDEzNzIxLCJleHAiOjE3MDM0MTczMjF9.RNw5p9ekrUbrzhh2jPbwHUG0rSg-NEb7-aqHuG28raU",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzAzNDQ2NzQ4LCJleHAiOjE3MDM0NTAzNDh9.wmGzLbJeYepOopM6BrY9--Kuzxh1Du0n4tBy8_mTZ-Q",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Created by alfathmuqoddas2\",\r\n    \"body\": \"Blog by alfathmuqoddas2\",\r\n    \"user_id\": 2\r\n}",
+							"raw": "{\r\n    \"title\": \"Blog Post create by alfathmuqoddas22\",\r\n    \"body\": \"This blog was created by alfathmuqoddas2\",\r\n    \"user_id\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -51,13 +51,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNDE1MDg2LCJleHAiOjE3MDM0MTg2ODZ9.Pn-juytZS76ZoM0LkiPWiczxU_Td8E7xcV14qe-1awQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNTE4NTk4LCJleHAiOjE3MDM1MjIxOTh9.QM3czvdNoKMH8LxSPZm_WNU1lZKdsTaFnJA8w_XL1rQ",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"category\": 2\r\n}",
+							"raw": "{\r\n    \"title\": \"This blog post was edited\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -92,7 +92,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNDE1MDg2LCJleHAiOjE3MDM0MTg2ODZ9.Pn-juytZS76ZoM0LkiPWiczxU_Td8E7xcV14qe-1awQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNDQ2ODgxLCJleHAiOjE3MDM0NTA0ODF9.rpb32GbyoQV0MEtqfD_lGw7NydgrAz_vkoLnSisFcJ0",
 								"type": "text"
 							}
 						],
@@ -110,7 +110,7 @@
 							"variable": [
 								{
 									"key": "blogId",
-									"value": "3"
+									"value": "6"
 								}
 							]
 						}
@@ -169,7 +169,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "3"
+									"value": "2"
 								}
 							]
 						}
@@ -280,7 +280,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNDA4MjE5LCJleHAiOjE3MDM0MTE4MTl9.IEebrBKgCApKMki89PW8R2e1bren3hiqPMM3QDhreog",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNDQ1NzIxLCJleHAiOjE3MDM0NDkzMjF9.XW18n-nMCHpB-ZoPOH7R4yX3Tj_ZlgZ3IKKekeMYTkQ",
 								"type": "text"
 							}
 						],
@@ -300,6 +300,160 @@
 									"key": "",
 									"value": "",
 									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment API",
+			"item": [
+				{
+					"name": "getCommentByBlogId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/blogs/:blogId/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogs",
+								":blogId",
+								"comments"
+							],
+							"variable": [
+								{
+									"key": "blogId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCommentByBlogId",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzAzNTE2NTY5LCJleHAiOjE3MDM1MjAxNjl9.9suMXLQJJIh2DlKwjcwiCwCXrzTyjEBp558itgzA5SM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"What the hell is this comment\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/blogs/:blogId/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"blogs",
+								":blogId",
+								"comments"
+							],
+							"variable": [
+								{
+									"key": "blogId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCommentById",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzAzNTE2NTY5LCJleHAiOjE3MDM1MjAxNjl9.9suMXLQJJIh2DlKwjcwiCwCXrzTyjEBp558itgzA5SM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/comments/:commentId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comments",
+								":commentId"
+							],
+							"variable": [
+								{
+									"key": "commentId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCommentById",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAzNTE5MTY0LCJleHAiOjE3MDM1MjI3NjR9.IYuRudM9tl5VPeT8Oa9k4UARDkSRgbex5ZEDutlQwsg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"This comment id was edited by alfathmuqoddas2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/comments/:commentId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comments",
+								":commentId"
+							],
+							"variable": [
+								{
+									"key": "commentId",
+									"value": "4"
 								}
 							]
 						}
